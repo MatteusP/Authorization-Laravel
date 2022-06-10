@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Inertia\Inertia;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,6 +18,14 @@ Route::get('/', function () {
 });
 
 Route::get('login', function(){
+    return Inertia::render('cadastro', [
+        'can' => [
+            'createUser' => false
+        ]
+    ]);
+});
+
+Route::get('cadastrar', function(){
     return;
 });
 
