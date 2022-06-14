@@ -1,5 +1,5 @@
 const mix = require('laravel-mix');
-
+const { VueLoaderPlugin } = require('vue-loader')
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -12,5 +12,21 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
-    .vue()
+    .vue(3)
     .sass('resources/sass/app.scss', 'public/css');
+
+    module.exports = {
+        module: {
+          rules: [
+            // ... other rules
+            {
+              test: /\.vue$/,
+              loader: 'vue-loader'
+            }
+          ]
+        },
+        plugins: [
+          // make sure to include the plugin!
+          new VueLoaderPlugin()
+        ]
+      }
